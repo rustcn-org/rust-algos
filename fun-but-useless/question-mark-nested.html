@@ -1,0 +1,243 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>?嵌套 - Rust代码鉴赏(Rust Codes)</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../about-book.html">Rust代码鉴赏</a></li><li class="chapter-item expanded "><a href="../algorithms/index.html"><strong aria-hidden="true">1.</strong> 算法之美</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../algorithms/sorting/index.html"><strong aria-hidden="true">1.1.</strong> 排序</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../algorithms/sorting/bubble-sort.html"><strong aria-hidden="true">1.1.1.</strong> 冒泡排序</a></li><li class="chapter-item "><a href="../algorithms/sorting/bucket-sort.html"><strong aria-hidden="true">1.1.2.</strong> 桶排序</a></li><li class="chapter-item "><a href="../algorithms/sorting/cocktail-shaker-sort.html"><strong aria-hidden="true">1.1.3.</strong> 鸡尾酒排序</a></li><li class="chapter-item "><a href="../algorithms/sorting/comb-sort.html"><strong aria-hidden="true">1.1.4.</strong> 梳排序</a></li><li class="chapter-item "><a href="../algorithms/sorting/counting-sort.html"><strong aria-hidden="true">1.1.5.</strong> 计数排序</a></li><li class="chapter-item "><a href="../algorithms/sorting/gnome-sort.html"><strong aria-hidden="true">1.1.6.</strong> 地精排序</a></li><li class="chapter-item "><a href="../algorithms/sorting/heap-sort.html"><strong aria-hidden="true">1.1.7.</strong> 堆排序</a></li><li class="chapter-item "><a href="../algorithms/sorting/insertion-sort.html"><strong aria-hidden="true">1.1.8.</strong> 插入排序</a></li><li class="chapter-item "><a href="../algorithms/sorting/merge-sort.html"><strong aria-hidden="true">1.1.9.</strong> 归并排序</a></li><li class="chapter-item "><a href="../algorithms/sorting/odd-even.html"><strong aria-hidden="true">1.1.10.</strong> 奇偶排序</a></li><li class="chapter-item "><a href="../algorithms/sorting/quick-sort.html"><strong aria-hidden="true">1.1.11.</strong> 快速排序</a></li><li class="chapter-item "><a href="../algorithms/sorting/radix-sort.html"><strong aria-hidden="true">1.1.12.</strong> 基数排序</a></li><li class="chapter-item "><a href="../algorithms/sorting/selection-sort.html"><strong aria-hidden="true">1.1.13.</strong> 选择排序</a></li><li class="chapter-item "><a href="../algorithms/sorting/shell-sort.html"><strong aria-hidden="true">1.1.14.</strong> 希尔排序</a></li><li class="chapter-item "><a href="../algorithms/sorting/stooge-sort.html"><strong aria-hidden="true">1.1.15.</strong> 臭皮匠排序</a></li></ol></li><li class="chapter-item "><a href="../algorithms/string/index.html"><strong aria-hidden="true">1.2.</strong> 字符串</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../algorithms/string/reverse.html"><strong aria-hidden="true">1.2.1.</strong> 逆序倒转</a></li><li class="chapter-item "><a href="../algorithms/string/burrows-wheeler-transform.html"><strong aria-hidden="true">1.2.2.</strong> 数据转换算法</a></li><li class="chapter-item "><a href="../algorithms/string/knuth-morris-pratt.html"><strong aria-hidden="true">1.2.3.</strong> KMP算法</a></li><li class="chapter-item "><a href="../algorithms/string/manacher.html"><strong aria-hidden="true">1.2.4.</strong> 马拉车算法</a></li><li class="chapter-item "><a href="../algorithms/string/rabin-karp.html"><strong aria-hidden="true">1.2.5.</strong> Rabin Karp算法</a></li></ol></li><li class="chapter-item "><a href="../algorithms/searching/index.html"><strong aria-hidden="true">1.3.</strong> 查找算法</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../algorithms/searching/binary-search.html"><strong aria-hidden="true">1.3.1.</strong> 二分查找</a></li><li class="chapter-item "><a href="../algorithms/searching/binary-search-recursive.html"><strong aria-hidden="true">1.3.2.</strong> 递归二分查找</a></li><li class="chapter-item "><a href="../algorithms/searching/kth-smallest.html"><strong aria-hidden="true">1.3.3.</strong> 查找第K小的元素</a></li><li class="chapter-item "><a href="../algorithms/searching/linear-search.html"><strong aria-hidden="true">1.3.4.</strong> 线性搜索</a></li></ol></li><li class="chapter-item "><a href="../algorithms/graph/index.html"><strong aria-hidden="true">1.4.</strong> 图论</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../algorithms/graph/bellman-ford.html"><strong aria-hidden="true">1.4.1.</strong> 最短路径-Bellman Ford</a></li><li class="chapter-item "><a href="../algorithms/graph/dijkstra.html"><strong aria-hidden="true">1.4.2.</strong> 最短路径-Dijkstra</a></li><li class="chapter-item "><a href="../algorithms/graph/depth-first-search.html"><strong aria-hidden="true">1.4.3.</strong> 深度优先搜索</a></li><li class="chapter-item "><a href="../algorithms/graph/breadth-first-search.html"><strong aria-hidden="true">1.4.4.</strong> 广度优先搜索</a></li><li class="chapter-item "><a href="../algorithms/graph/depth-first-tic-tac-toe.html"><strong aria-hidden="true">1.4.5.</strong> 深度优先Tic Tac Toe</a></li><li class="chapter-item "><a href="../algorithms/graph/minimum-spanning-tree.html"><strong aria-hidden="true">1.4.6.</strong> 最小生成树</a></li><li class="chapter-item "><a href="../algorithms/graph/prim.html"><strong aria-hidden="true">1.4.7.</strong> Prim算法(最小生成树)</a></li></ol></li><li class="chapter-item "><a href="../algorithms/dynamic-programming/index.html"><strong aria-hidden="true">1.5.</strong> 动态规划</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../algorithms/dynamic-programming/fibonacci.html"><strong aria-hidden="true">1.5.1.</strong> 斐波那契(fibonacci)</a></li><li class="chapter-item "><a href="../algorithms/dynamic-programming/coin-change.html"><strong aria-hidden="true">1.5.2.</strong> 找钱(Coin change)</a></li><li class="chapter-item "><a href="../algorithms/dynamic-programming/edit-distance.html"><strong aria-hidden="true">1.5.3.</strong> 最小编辑距离(Edit distance)</a></li><li class="chapter-item "><a href="../algorithms/dynamic-programming/egg-dropping.html"><strong aria-hidden="true">1.5.4.</strong> 扔鸡蛋(Egg dropping)</a></li><li class="chapter-item "><a href="../algorithms/dynamic-programming/is-subsequence.html"><strong aria-hidden="true">1.5.5.</strong> 判断子序列</a></li><li class="chapter-item "><a href="../algorithms/dynamic-programming/knapsack.html"><strong aria-hidden="true">1.5.6.</strong> 背包问题</a></li><li class="chapter-item "><a href="../algorithms/dynamic-programming/longese-common-sequence.html"><strong aria-hidden="true">1.5.7.</strong> 最长公共子序列</a></li><li class="chapter-item "><a href="../algorithms/dynamic-programming/longest_continuous_increasing_subsequence.html"><strong aria-hidden="true">1.5.8.</strong> 最长连续递增序列</a></li><li class="chapter-item "><a href="../algorithms/dynamic-programming/longest-increasing-subsequence.html"><strong aria-hidden="true">1.5.9.</strong> 最长上升子序列</a></li><li class="chapter-item "><a href="../algorithms/dynamic-programming/maximal-square.html"><strong aria-hidden="true">1.5.10.</strong> 最大正方形</a></li><li class="chapter-item "><a href="../algorithms/dynamic-programming/maximal-subarray.html"><strong aria-hidden="true">1.5.11.</strong> 最大子数组</a></li><li class="chapter-item "><a href="../algorithms/dynamic-programming/rod-cutting.html"><strong aria-hidden="true">1.5.12.</strong> 棒的切割</a></li></ol></li><li class="chapter-item "><div><strong aria-hidden="true">1.6.</strong> 数学</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../algorithms/math/extended-euclidean.html"><strong aria-hidden="true">1.6.1.</strong> 扩展欧几里得算法</a></li><li class="chapter-item "><a href="../algorithms/math/greatest-common-divisor.html"><strong aria-hidden="true">1.6.2.</strong> 最大公约数</a></li><li class="chapter-item "><a href="../algorithms/math/pascal-triange.html"><strong aria-hidden="true">1.6.3.</strong> 帕斯卡三角</a></li><li class="chapter-item "><a href="../algorithms/math/perfect-numbers.html"><strong aria-hidden="true">1.6.4.</strong> 寻找完美数</a></li><li class="chapter-item "><a href="../algorithms/math/prime-check.html"><strong aria-hidden="true">1.6.5.</strong> 质数检测</a></li><li class="chapter-item "><a href="../algorithms/math/prime-numbers.html"><strong aria-hidden="true">1.6.6.</strong> 质数筛法</a></li><li class="chapter-item "><a href="../algorithms/math/trial-division.html"><strong aria-hidden="true">1.6.7.</strong> 试除法</a></li></ol></li><li class="chapter-item "><div><strong aria-hidden="true">1.7.</strong> 几何</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../algorithms/geometry/closet-points.html"><strong aria-hidden="true">1.7.1.</strong> 最近点算法</a></li></ol></li><li class="chapter-item "><div><strong aria-hidden="true">1.8.</strong> 常用算法</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../algorithms/general/convex-hull.html"><strong aria-hidden="true">1.8.1.</strong> 凸包算法</a></li><li class="chapter-item "><a href="../algorithms/general/hanoi.html"><strong aria-hidden="true">1.8.2.</strong> 汉诺塔算法</a></li><li class="chapter-item "><a href="../algorithms/general/kmeans.html"><strong aria-hidden="true">1.8.3.</strong> K-Means算法</a></li><li class="chapter-item "><a href="../algorithms/general/nqueens.html"><strong aria-hidden="true">1.8.4.</strong> N皇后算法</a></li><li class="chapter-item "><a href="../algorithms/general/two-sum.html"><strong aria-hidden="true">1.8.5.</strong> 两数之和</a></li></ol></li><li class="chapter-item "><a href="../algorithms/cipher/index.html"><strong aria-hidden="true">1.9.</strong> 加密算法</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../algorithms/cipher/caesar.html"><strong aria-hidden="true">1.9.1.</strong> 凯撒算法(caesar)</a></li><li class="chapter-item "><a href="../algorithms/cipher/morse-code.html"><strong aria-hidden="true">1.9.2.</strong> 摩斯码</a></li><li class="chapter-item "><a href="../algorithms/cipher/polibius.html"><strong aria-hidden="true">1.9.3.</strong> Polibius密码</a></li><li class="chapter-item "><a href="../algorithms/cipher/rot13.html"><strong aria-hidden="true">1.9.4.</strong> rot13加密算法</a></li><li class="chapter-item "><a href="../algorithms/cipher/another-rot13.html"><strong aria-hidden="true">1.9.5.</strong> rot13第二种实现</a></li><li class="chapter-item "><a href="../algorithms/cipher/sha256.html"><strong aria-hidden="true">1.9.6.</strong> sha256加密</a></li><li class="chapter-item "><a href="../algorithms/cipher/vigenere.html"><strong aria-hidden="true">1.9.7.</strong> vigenere加密</a></li><li class="chapter-item "><a href="../algorithms/cipher/xor.html"><strong aria-hidden="true">1.9.8.</strong> xor</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../data-structures/index.html"><strong aria-hidden="true">2.</strong> 数据结构</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../data-structures/b-tree.html"><strong aria-hidden="true">2.1.</strong> B树</a></li><li class="chapter-item "><a href="../data-structures/binary-search-tree.html"><strong aria-hidden="true">2.2.</strong> 二叉树</a></li><li class="chapter-item "><a href="../data-structures/avl-tree.html"><strong aria-hidden="true">2.3.</strong> avl树</a></li><li class="chapter-item "><a href="../data-structures/linked-list.html"><strong aria-hidden="true">2.4.</strong> 链表</a></li><li class="chapter-item "><a href="../data-structures/heap.html"><strong aria-hidden="true">2.5.</strong> 堆(Heap)</a></li><li class="chapter-item "><a href="../data-structures/stack.html"><strong aria-hidden="true">2.6.</strong> 栈</a></li><li class="chapter-item "><a href="../data-structures/queue.html"><strong aria-hidden="true">2.7.</strong> 队列</a></li><li class="chapter-item "><a href="../data-structures/trie.html"><strong aria-hidden="true">2.8.</strong> trie(字典树)</a></li><li class="chapter-item "><a href="../data-structures/graph.html"><strong aria-hidden="true">2.9.</strong> 图(graph)</a></li></ol></li><li class="chapter-item expanded "><a href="../fight-compiler/index.html"><strong aria-hidden="true">3.</strong> 对抗编译检查</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../fight-compiler/iterator.html"><strong aria-hidden="true">3.1.</strong> 迭代器Iterator</a></li></ol></li><li class="chapter-item expanded "><a href="../deep-trait/index.html"><strong aria-hidden="true">4.</strong> 深入特征</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../deep-trait/deref.html"><strong aria-hidden="true">4.1.</strong> Deref</a></li></ol></li><li class="chapter-item expanded "><a href="../pitfalls/index.html"><strong aria-hidden="true">5.</strong> Rust陷阱系列</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../pitfalls/use-vec-in-for.html"><strong aria-hidden="true">5.1.</strong> for循环中使用外部数组</a></li><li class="chapter-item "><a href="../pitfalls/stack-overflow.html"><strong aria-hidden="true">5.2.</strong> 线程类型导致的栈溢出</a></li><li class="chapter-item "><a href="../pitfalls/arithmetic-overflow.html"><strong aria-hidden="true">5.3.</strong> 算术溢出导致的panic</a></li><li class="chapter-item "><a href="../pitfalls/closure-with-lifetime.html"><strong aria-hidden="true">5.4.</strong> 闭包中奇怪的生命周期</a></li><li class="chapter-item "><a href="../pitfalls/the-disabled-mutability.html"><strong aria-hidden="true">5.5.</strong> 可变变量不可变？</a></li><li class="chapter-item "><a href="../pitfalls/multiple-mutable-references.html"><strong aria-hidden="true">5.6.</strong> 可变借用失败引发的深入思考</a></li></ol></li><li class="chapter-item expanded "><a href="../iterator/index.html"><strong aria-hidden="true">6.</strong> 迭代器Iterator</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../iterator/from-start-and-end.html"><strong aria-hidden="true">6.1.</strong> 同时从首尾遍历</a></li></ol></li><li class="chapter-item expanded "><a href="../unsafe/index.html"><strong aria-hidden="true">7.</strong> Unsafe Rust</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../unsafe/get-arryr-index-by-elem.html"><strong aria-hidden="true">7.1.</strong> 通过元素获取数组索引</a></li><li class="chapter-item "><a href="../unsafe/multi-dimension-array.html"><strong aria-hidden="true">7.2.</strong> 实现多维数组</a></li><li class="chapter-item "><a href="../unsafe/self-ref.html"><strong aria-hidden="true">7.3.</strong> 实现自引用</a></li></ol></li><li class="chapter-item expanded "><a href="../operator-override/index.html"><strong aria-hidden="true">8.</strong> 运算符重载</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../operator-override/index.html"><strong aria-hidden="true">8.1.</strong> 数组索引</a></li></ol></li><li class="chapter-item expanded "><a href="../pattern-match/index.html"><strong aria-hidden="true">9.</strong> 模式匹配</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../pattern-match/return-with-match.html"><strong aria-hidden="true">9.1.</strong> 使用match和if let返回值</a></li></ol></li><li class="chapter-item expanded "><a href="../principles-behind-weird-code/index.html"><strong aria-hidden="true">10.</strong> 奇怪代码背后的原理</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../principles-behind-weird-code/ref-to-rvalue.html"><strong aria-hidden="true">10.1.</strong> 右值取地址</a></li><li class="chapter-item "><a href="../principles-behind-weird-code/autoref.html"><strong aria-hidden="true">10.2.</strong> autoref/autoderef</a></li></ol></li><li class="chapter-item expanded "><a href="../fun-but-useless/index.html"><strong aria-hidden="true">11.</strong> 有趣但是用处不大的代码</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../fun-but-useless/question-mark-nested.html" class="active"><strong aria-hidden="true">11.1.</strong> ?嵌套</a></li></ol></li><li class="chapter-item expanded "><a href="../stack-heap/index.html"><strong aria-hidden="true">12.</strong> 堆和栈</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../stack-heap/recursive-stack-overlfow.html"><strong aria-hidden="true">12.1.</strong> 避免递归函数栈溢出</a></li></ol></li><li class="chapter-item expanded "><a href="../make-things-easier/index.html"><strong aria-hidden="true">13.</strong> 将复杂的实现简化</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../make-things-easier/1.html"><strong aria-hidden="true">13.1.</strong> 代码1</a></li></ol></li><li class="chapter-item expanded "><a href="../obscure/index.html"><strong aria-hidden="true">14.</strong> 复杂难懂的代码</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../obscure/1.html"><strong aria-hidden="true">14.1.</strong> 代码1</a></li></ol></li><li class="chapter-item expanded "><a href="../templates/intro.html"><strong aria-hidden="true">15.</strong> 场景模版 todo</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../templates/files/intro.html"><strong aria-hidden="true">15.1.</strong> 文件操作</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../templates/files/dir.html"><strong aria-hidden="true">15.1.1.</strong> 目录(todo)</a></li></ol></li><li class="chapter-item "><a href="../templates/http/intro.html"><strong aria-hidden="true">15.2.</strong> Http请求(todo)</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Rust代码鉴赏(Rust Codes)</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/sunface/rust-course/tree/main/codes" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        <a href="https://github.com/sunface/rust-course/tree/main/codes/src/fun-but-useless/question-mark-nested.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="嵌套"><a class="header" href="#嵌套">?嵌套</a></h1>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>pub fn parse_items&lt;I, O, E&gt;(input: I) -&gt; impl Iterator&lt;Item = io::Result&lt;Result&lt;O, E&gt;&gt;&gt;
+where
+    I: BufRead,
+    O: FromStr&lt;Err = E&gt;,
+{
+    input.lines().filter_map(|line| {
+        let line = match line {
+            Ok(line) =&gt; line,
+            Err(e) =&gt; return Some(Err(e)),
+        };
+        let line = line.trim();
+        if line.is_empty() {
+            None
+        } else {
+            Some(Ok(line.parse()))
+        }
+    })
+}
+<span class="boring">}
+</span></code></pre></pre>
+<p>然后下面的用法是完全合法的，注意<code>??</code>的使用:</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let numbers: io::Result&lt;Result&lt;Vec&lt;Line&gt;, Error&gt;&gt; = aoc::parse_items(input).collect();
+let numbers = numbers??;
+<span class="boring">}
+</span></code></pre></pre>
+<p>考虑到<code>FromIterator</code>的实现，好像这样使用也是有道理的：</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>impl&lt;A, E, V&gt; FromIterator&lt;Result&lt;A, E&gt;&gt; for Result&lt;V, E&gt; where
+    V: FromIterator&lt;A&gt;,
+<span class="boring">}
+</span></code></pre></pre>
+<p>这是因为<code>Result&lt;Vec&lt;Line&gt;&gt;</code>实现了<code>FromIterator&lt;Result&lt;Line&gt;&gt;</code>，所以<code>io::Result&lt;Result&lt;Vec&lt;Line&gt;&gt;&gt;</code>就实现了<code>FromIterator&lt;io::Result&lt;Result&lt;Line&gt;&gt;</code></p>
+<p>虽然上面的代码很酷，但是仔细想起来还是怪怪的，是不？最主要是难以理解，所以不建议大家使用。</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../fun-but-useless/index.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../stack-heap/index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../fun-but-useless/index.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../stack-heap/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </body>
+</html>
