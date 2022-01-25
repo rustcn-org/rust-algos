@@ -1,13 +1,13 @@
 [book]
-authors = ["sunface"]
+authors = ["course.rs"]
 language = "zh-CN"
 multilingual = false
 src = "src"
-title = "Rust代码鉴赏(Rust Codes)"
+title = "Rust算法教程 The Algos (algorithms)"
 
 [output.html]
-git-repository-url = "https://github.com/sunface/rust-course/tree/main/codes"
-edit-url-template = "https://github.com/sunface/rust-course/tree/main/codes/{path}"
+git-repository-url = "https://github.com/course-rs/algos"
+edit-url-template = "https://github.com/course-rs/algos/{path}"
 
 [output.html.fold]
 enable = true
