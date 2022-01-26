@@ -7,7 +7,7 @@ title = "Rust算法教程 The Algos (algorithms)"
 
 [output.html]
 git-repository-url = "https://github.com/course-rs/algos"
-edit-url-template = "https://github.com/course-rs/algos/{path}"
+edit-url-template = "https://github.com/course-rs/algos/blob/main/{path}"
 
 [output.html.fold]
 enable = true

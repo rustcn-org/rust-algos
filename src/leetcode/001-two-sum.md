@@ -66,6 +66,7 @@ impl Solution {
 ```
 
 如果你是个Rust新手的话，相信你可能会存在以下几点疑惑：
-+ 为什么需要`use std::collections::HashMap;`这一行：可能是觉得HashMap用的没有那么多吧，因此Rust并没有将HashMap列入Prelude行列当中，因此当我们需要使用HashMap时，需要手动引入。
-+ 前面的`for i in 0..nums.len()`哪去了，这个`for (index, value) in nums.iter().enumerate()`是个什么鬼：在Rust中推荐使用迭代器，而enumerate这个迭代器适配器返回含有(下标，值)的元组。
-+ 为什么`if let Some(&other_index) = map.get(&other)`需要用到两个引用符号：简单来说，因为所有权的问题。[HashMap的get方法](https://doc.rust-lang.org/std/collections/struct.HashMap.html#method.get)中传入的参数是对key的引用，返回的是Option<&value>，因此我们需要用这两个引用符号。
+
+- 为什么需要`use std::collections::HashMap;`这一行：可能是觉得HashMap用的没有那么多吧，因此Rust并没有将HashMap列入Prelude行列当中，因此当我们需要使用HashMap时，需要手动引入。
+- 前面的`for i in 0..nums.len()`哪去了，这个`for (index, value) in nums.iter().enumerate()`是个什么鬼：在Rust中推荐使用迭代器，而enumerate这个迭代器适配器返回含有(下标，值)的元组。
+- 为什么`if let Some(&other_index) = map.get(&other)`需要用到两个引用符号：简单来说，因为所有权的问题。[HashMap的get方法](https://doc.rust-lang.org/std/collections/struct.HashMap.html#method.get)中传入的参数是对key的引用，返回的是Option<&value>，因此我们需要用这两个引用符号。
