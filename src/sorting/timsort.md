@@ -2,7 +2,7 @@
 
 > 算法由 [xieyu567](https://github.com/xieyu567) 提交
 
-```rust
+```rust,editable
 use std::cmp::min;
 
 pub fn find_min_run(mut n: usize) -> usize {
