@@ -1,5 +1,7 @@
 # Timsort
 
+> 算法由 [xieyu567](https://github.com/xieyu567) 提交
+
 ```rust
 use std::cmp::min;
 
