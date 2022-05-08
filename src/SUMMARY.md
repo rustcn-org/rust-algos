@@ -95,6 +95,7 @@
     - [队列](data-structures/queue.md)
     - [trie(字典树)](data-structures/trie.md)
     - [图(graph)](data-structures/graph.md)
+    - [循环队列(circular queue)](data-structures/circular-queue.md)
 
 - [LeetCode题解](leetcode/index.md)
     - [1.两数之和](leetcode/001-two-sum.md)
