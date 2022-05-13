@@ -1,5 +1,7 @@
 # Timsort
 
+Timsort 是以人命名的排序法，是由 Tim Peters 实现的一种混合排序法，Rust 中的 [slice::sort](https://doc.rust-lang.org/std/primitive.slice.html#method.sort) 就是根据该算法改编。源码可以在 [rust/slice.rs](https://github.com/rust-lang/rust/blob/5f60208ba11171c249284f8fe0ea6b3e9b63383c/src/liballoc/slice.rs#L841-L980) 找到
+
 > 算法由 [xieyu567](https://github.com/xieyu567) 提交
 
 ```rust,editable

@@ -18,6 +18,7 @@
     - [选择排序](sorting/selection-sort.md)
     - [希尔排序](sorting/shell-sort.md)
     - [臭皮匠排序](sorting/stooge-sort.md)
+    - [Tim 排序](sorting/timsort.md)
 
 - [字符串](string/index.md)
     - [逆序倒转](string/reverse.md)
