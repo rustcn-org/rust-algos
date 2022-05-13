@@ -1,56 +1,35 @@
 # 归并排序
 
 ```rust
-pub fn merge_sort<T>(arr: &mut [T])
-where
-    T: PartialOrd + Clone + Default,
-{
-    if arr.len() > 1 {
-        merge_sort_range(arr, 0, arr.len() - 1);
-    }
-}
-
-fn merge_sort_range<T>(arr: &mut [T], lo: usize, hi: usize)
-where
-    T: PartialOrd + Clone + Default,
-{
+// 注意区分 Vec<T> 和 [T]
+pub fn merge_sort<T: Copy + Ord + Default>(arr: &mut [T]) {
     // 只有当元素个数大于一时才进行排序
-    if lo < hi {
-        let mid = lo + ((hi - lo) >> 1);
-        merge_sort_range(arr, lo, mid);
-        merge_sort_range(arr, mid + 1, hi);
-        merge_two_arrays(arr, lo, mid, hi);
+    if arr.len() > 1 {
+        let mid = arr.len() / 2;
+        // 递归排序左边数组
+        let mut left_arr = merge_sort(&mut arr[..mid]);
+        // 递归排序右边数组
+        let mut right_arr = merge_sort(&mut arr[mid..]);
+        // 合并
+        return merge(arr, mid);
     }
 }
 
-// 合并两个有序数组: arr[lo..=mid], arr[mid + 1..=hi]
-fn merge_two_arrays<T>(arr: &mut [T], lo: usize, mid: usize, hi: usize)
-where
-    T: PartialOrd + Clone + Default,
-{
-    // 这里需要 clone 数组元素
-    let mut arr1 = arr[lo..=mid].to_vec();
-    let mut arr2 = arr[mid + 1..=hi].to_vec();
-
-    let (mut i, mut j) = (0, 0);
-    while i < arr1.len() && j < arr2.len() {
-        if arr1[i] < arr2[j] {
-            arr[i + j + lo] = std::mem::take(&mut arr1[i]);
-            i += 1;
+// 不能同时有两个可变引用，所以使用 arr, mid
+fn merge<T: Copy + Ord + Default>(arr: &mut [T], mid: usize) {
+    let mut left_arr = arr[..mid].to_vec();
+    let mut right_arr = arr[mid..].to_vec();
+    // 数组索引
+    let (mut l, mut r) = (0, 0);
+    for v in arr {
+        // 这里的顺序不能交换。如果交换顺序，右侧全部 push 之后，r 会超过 right_arr.len，会导致越界错误
+        if r == right_arr.len() || (l < left_arr.len() && left_arr[l] < right_arr[r]) {
+            *v = left_arr[l];
+            l += 1;
         } else {
-            arr[i + j + lo] = std::mem::take(&mut arr2[j]);
-            j += 1;
+            *v = right_arr[r];
+            r += 1;
         }
-    }
-
-    while i < arr1.len() {
-        arr[i + j + lo] = std::mem::take(&mut arr1[i]);
-        i += 1;
-    }
-
-    while j < arr2.len() {
-        arr[i + j + lo] = std::mem::take(&mut arr2[j]);
-        j += 1;
     }
 }
 
@@ -59,37 +38,46 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_empty_vec() {
-        let mut empty_vec: Vec<String> = vec![];
-        merge_sort(&mut empty_vec);
-        assert_eq!(empty_vec, Vec::<String>::new());
+    fn basic() {
+        let mut res = vec![10, 8, 4, 3, 1, 9, 2, 7, 5, 6];
+        merge_sort(&mut res);
+        assert_eq!(res, vec![1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
     }
 
     #[test]
-    fn test_number_vec() {
-        let mut vec = vec![7, 49, 73, 58, 30, 72, 44, 78, 23, 9];
-        merge_sort(&mut vec);
-        assert_eq!(vec, vec![7, 9, 23, 30, 44, 49, 58, 72, 73, 78]);
+    fn basic_string() {
+        let mut res = vec!["a", "bb", "d", "cc"];
+        merge_sort(&mut res);
+        assert_eq!(res, vec!["a", "bb", "cc", "d"]);
     }
 
     #[test]
-    fn test_string_vec() {
-        let mut vec = vec![
-            String::from("Bob"),
-            String::from("David"),
-            String::from("Carol"),
-            String::from("Alice"),
-        ];
-        merge_sort(&mut vec);
-        assert_eq!(
-            vec,
-            vec![
-                String::from("Alice"),
-                String::from("Bob"),
-                String::from("Carol"),
-                String::from("David"),
-            ]
-        );
+    fn empty() {
+        let mut res = Vec::<u8>::new();
+        merge_sort(&mut res);
+        assert_eq!(res, vec![]);
+    }
+
+    #[test]
+    fn one_element() {
+        let mut res = vec![1];
+        merge_sort(&mut res);
+        assert_eq!(res, vec![1]);
+    }
+
+    #[test]
+    fn pre_sorted() {
+        let mut res = vec![1, 2, 3, 4];
+        merge_sort(&mut res);
+        assert_eq!(res, vec![1, 2, 3, 4]);
+    }
+
+    #[test]
+    fn reverse_sorted() {
+        let mut res = vec![4, 3, 2, 1];
+        merge_sort(&mut res);
+        assert_eq!(res, vec![1, 2, 3, 4]);
     }
 }
+
 ```
