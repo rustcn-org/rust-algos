@@ -54,8 +54,10 @@ pub fn carried(
 对于Rust新手(编者本人🤷‍♂️)，我在解题时遇到的问题。
 
 1. `Option<Box<ListNode>>`是链表的常规写法。
-2. 对Option的and_then方法不熟悉。可以简单的把它理解成：只有Option所包含的值不为None时才执行的map方法。
-3. 对于递归函数carried，在使用时并不是看到carried()就马上开始调用，而是要先算出这个函数的参数，在此题中就先进行闭包运算，之后在进行下一场递归。所以闭包体中的carry变量只能在本层捕获，再通过carried()的第三个参数传道下一层。
+
+2. 对Option的`and_then`方法不熟悉。可以简单的把它理解成：只有Option所包含的值不为None时才执行的map方法。
+
+3. 对于递归函数`carried`，在使用时并不是看到`carried()`就马上开始调用，而是要先算出这个函数的参数，在此题中就先进行闭包运算，之后在进行下一场递归。所以闭包体中的`carry`变量只能在本层捕获，再通过`carried()`的第三个参数传道下一层。
 
 ## 模拟解法
 [常规模拟](https://leetcode.cn/problems/add-two-numbers/solution/liang-shu-xiang-jia-by-leetcode-solution/)

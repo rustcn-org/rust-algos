@@ -33,7 +33,7 @@ impl Solution { // 滑动窗口的应用
 
 我在解题时遇到的问题。
 
-1. `String`类型的`char_indices`方法。类似于迭代器的`enumerate`方法，会返回含有`(下标，值)`的元组。
+1. `String`类型的`char_indices`方法。类似于迭代器的`enumerate`方法，会返回含有`(下标，值)`的元组，其中的值是对应的`char`类型。
 
 2. `map.insert(k, v)`的返回值是一个`Option`。
     - 当`map`中没有`k`对应的`v`时，就返回`None`；
